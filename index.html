@@ -186,14 +186,15 @@
          [text spans full width below] */
       .intro{
         display: grid;
-        grid-template-columns: 1fr 110px;
+        grid-template-columns: 1fr max-content; /* <-- key change */
         grid-template-rows: auto auto;
-        gap: 10px 14px;
+        column-gap: 14px;
+        row-gap: 10px;
         align-items: start;
         margin-top: 12px;
-        flex-direction: initial; /* neutralize row-reverse for mobile */
+        flex-direction: initial;
       }
-
+      
       .intro .avatar{
         grid-column: 2;
         grid-row: 1;
