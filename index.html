@@ -66,9 +66,9 @@
       margin-bottom: 18px;
     }
     .name-line{
-      font-family: "Jura", sans-serif;
-      font-weight: 600;
-      letter-spacing: 0.02em;
+      margin: 0;
+      font-size: clamp(24px, 1.4vw + 18px, 30px);
+      letter-spacing: -0.015em;
     }
     .name-line b{
       font-weight: 700;
@@ -115,8 +115,11 @@
     }
 
     .section h4{
-        color: var(--link);        /* your existing purple */
-        font-weight: 650;
+      font-family: inherit; /* reset first */
+      font-family: "Jura", sans-serif;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      color: var(--link);
     }
     
     .paper-title{
@@ -215,7 +218,7 @@
     </div>
 
     <div class="section" id="pubs">
-      <h4>Publications & preprints</h4>
+      <h4>Publications + Preprints</h4>
 
       <div class="paper">
         <span class="conf-tag">Under Submission at ICLR 2026</span>
