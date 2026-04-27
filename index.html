@@ -48,6 +48,7 @@
     }
 
     html{ scroll-behavior:smooth; }
+
     body{
       margin:0;
       background:var(--bg);
@@ -62,8 +63,18 @@
 
     p{ margin: 0 0 12px; }
 
-    a{ color:var(--link); text-decoration:none; border-radius: 6px; padding: 0 2px; }
-    a:hover{ color:var(--link-hover); background: var(--hoverbg); text-decoration:none; }
+    a{
+      color:var(--link);
+      text-decoration:none;
+      border-radius: 6px;
+      padding: 0 2px;
+    }
+
+    a:hover{
+      color:var(--link-hover);
+      background: var(--hoverbg);
+      text-decoration:none;
+    }
 
     main{
       max-width: 860px;
@@ -71,7 +82,6 @@
       padding: clamp(32px, 5vw, 56px) 20px 72px;
     }
 
-    /* --- Header (desktop) --- */
     header{
       display:flex;
       align-items:flex-start;
@@ -87,9 +97,9 @@
       font-size: clamp(24px, 1.4vw + 18px, 30px);
       letter-spacing: 0.02em;
     }
+
     .name-line b{ font-weight: 600; }
 
-    /* --- Icon row --- */
     .icons{
       list-style:none;
       padding:0;
@@ -98,12 +108,14 @@
       gap:6px;
       flex-wrap:wrap;
     }
+
     .icons a{
       font-family: "Jura", sans-serif;
       font-weight: 500;
-      padding: 6px;         /* makes tapping nicer without adding visible boxes */
+      padding: 6px;
       background: none;
     }
+
     .icons a .linkicon{
       width: 18px;
       height: 18px;
@@ -111,25 +123,26 @@
       opacity: 0.9;
       flex: 0 0 auto;
     }
-    /* hover = just darker accent (no background box) */
+
     .icons a:hover{
       color: var(--icon-accent-hover);
       background: none;
       text-decoration: none;
     }
 
-    /* --- Intro (desktop: text left, photo right) --- */
     .intro{
       display:flex;
       gap:22px;
       align-items:flex-start;
       margin-top: 22px;
-      flex-direction: row-reverse; /* photo on right on desktop */
+      flex-direction: row-reverse;
     }
+
     .intro p{
       font-size: 0.90em;
       line-height: 1.5;
     }
+
     .avatar{
       width: 140px;
       height: 140px;
@@ -141,7 +154,10 @@
       box-shadow: none;
     }
 
-    /* --- Section headings + papers --- */
+    .section{
+      margin-top: 26px;
+    }
+
     .section h4{
       font-family: "Jura", sans-serif;
       font-weight: 700;
@@ -150,21 +166,6 @@
       margin: 30px 0 12px;
     }
 
-    .paper-title{
-      color: #54568F; /* darker, muted */
-      font-weight: 600;
-      display: block;
-      margin: 2px 0 6px;
-      word-break: break-word;
-    }
-    .paper-title:hover{
-      color: #000000;
-      text-decoration: underline;
-      background: none;
-    }
-
-    .section{ margin-top: 26px; }
-
     .paper{
       padding: 12px 0;
       margin: 0;
@@ -172,7 +173,10 @@
       background: transparent;
       border-radius: 0;
     }
-    .paper:first-of-type{ border-top: none; }
+
+    .paper:first-of-type{
+      border-top: none;
+    }
 
     .conf-tag{
       display:block;
@@ -181,11 +185,79 @@
       margin-bottom: 6px;
     }
 
-    .paper-meta{ color: var(--muted); font-size: 14px; }
-    .small{ color: var(--muted); font-size: 13px; }
-    .divider{ height:1px; background:var(--border); margin: 28px 0; }
+    .paper-title{
+      color: #54568F;
+      font-weight: 600;
+      display: block;
+      margin: 2px 0 6px;
+      word-break: break-word;
+    }
 
-    /* --- Mobile: keep desktop exactly, but change layout to your desired stack --- */
+    .paper-title:hover{
+      color: #000000;
+      text-decoration: underline;
+      background: none;
+    }
+
+    .paper-meta{
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .small{
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .divider{
+      height:1px;
+      background:var(--border);
+      margin: 28px 0;
+    }
+
+    .friends-section{
+      margin-top: 34px;
+    }
+
+    .friends-note{
+      color: var(--muted);
+      font-size: 14px;
+      margin: 0 0 10px;
+    }
+
+    .friend-list{
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 14px;
+      align-items: center;
+      line-height: 1.7;
+    }
+
+    .friend-link{
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--link);
+      padding: 0;
+      border-radius: 0;
+      background: none;
+      white-space: nowrap;
+    }
+
+    .friend-link:hover{
+      color: var(--link-hover);
+      background: none;
+      text-decoration: none;
+    }
+
+    .friend-icon{
+      font-size: 0.95em;
+      line-height: 1;
+      opacity: 0.85;
+      display: inline-block;
+      transform: translateY(-0.02em);
+    }
+
     @media (max-width: 700px){
       header{
         flex-direction: column;
@@ -194,13 +266,9 @@
         margin-bottom: 12px;
       }
 
-      /* desired mobile behavior:
-         [header stacked]
-         [photo top-right next to the start of intro]
-         [text spans full width below] */
       .intro{
         display: grid;
-        grid-template-columns: 1fr max-content; 
+        grid-template-columns: 1fr max-content;
         grid-template-rows: auto auto;
         column-gap: 14px;
         row-gap: 10px;
@@ -217,21 +285,30 @@
         justify-self: end;
       }
       
-      /* text starts beside photo, not underneath it */
       .intro > div{
         grid-column: 1;
         grid-row: 1;
         min-width: 0;
       }
+
+      .friend-list{
+        gap: 7px 12px;
+      }
     }
 
     @media (max-width: 420px){
-      main{ padding: 30px 14px 56px; }
-      .icons{ gap: 8px; }
+      main{
+        padding: 30px 14px 56px;
+      }
+
+      .icons{
+        gap: 8px;
+      }
 
       .intro{
         grid-template-columns: 1fr max-content;
       }
+
       .intro .avatar{
         width: 96px;
         height: 96px;
@@ -242,7 +319,6 @@
 
 <body>
   <main>
-    <!-- Desktop stays: name left, buttons right -->
     <header>
       <div>
         <p class="name-line">
@@ -285,7 +361,6 @@
       </ul>
     </header>
 
-    <!-- Desktop stays: text left, photo right. Mobile becomes your desired layout. -->
     <div class="intro">
       <img class="avatar" src="images/me.jpg" alt="Mary Letey"
         onerror="this.onerror=null;this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'280\' height=\'280\' viewBox=\'0 0 280 280\'><circle cx=\'140\' cy=\'140\' r=\'140\' fill=\'%23e5e7eb\'/><text x=\'50%\' y=\'54%\' dominant-baseline=\'middle\' text-anchor=\'middle\' font-family=\'Arial, Helvetica, sans-serif\' font-size=\'96\' fill=\'%230f172a\'>AM</text></svg>'" />
@@ -343,6 +418,53 @@
           Discrete Symmetry in Lorentzian Spaces
         </a>
         <div class="paper-meta"><strong>Mary Letey</strong>, Latham Boyle</div>
+      </div>
+    </div>
+
+    <div class="section friends-section" id="friends">
+      <h4>Friends + Collaborators</h4>
+      <p class="friends-note">some homies with websites</p>
+
+      <div class="friend-list" aria-label="Friends and collaborators">
+        <a class="friend-link" href="https://example.com" target="_blank" rel="noreferrer">
+          <span class="friend-icon">🎻</span>
+          <span>Name</span>
+        </a>
+
+        <a class="friend-link" href="https://example.com" target="_blank" rel="noreferrer">
+          <span class="friend-icon">🎮</span>
+          <span>Name</span>
+        </a>
+
+        <a class="friend-link" href="https://example.com" target="_blank" rel="noreferrer">
+          <span class="friend-icon">🐈</span>
+          <span>Name</span>
+        </a>
+
+        <a class="friend-link" href="https://example.com" target="_blank" rel="noreferrer">
+          <span class="friend-icon">☀︎</span>
+          <span>Name</span>
+        </a>
+
+        <a class="friend-link" href="https://example.com" target="_blank" rel="noreferrer">
+          <span class="friend-icon">↗</span>
+          <span>Name</span>
+        </a>
+
+        <a class="friend-link" href="https://example.com" target="_blank" rel="noreferrer">
+          <span class="friend-icon">🏔</span>
+          <span>Name</span>
+        </a>
+
+        <a class="friend-link" href="https://example.com" target="_blank" rel="noreferrer">
+          <span class="friend-icon">∂</span>
+          <span>Name</span>
+        </a>
+
+        <a class="friend-link" href="https://example.com" target="_blank" rel="noreferrer">
+          <span class="friend-icon">🧗</span>
+          <span>Name</span>
+        </a>
       </div>
     </div>
   </main>
