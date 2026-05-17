@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <script data-goatcounter="https://marutator.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="icon" type="image/png" href="images/icon.png">
+  <link rel="icon" href="/images/icon.png" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/icon.png">
+  <link rel="apple-touch-icon" href="/images/icon.png">
+
+  <meta property="og:title" content="Mary Letey">
+  <meta property="og:description" content="Applied Mathematics PhD student at Harvard. Deep learning theory.">
+  <meta property="og:image" content="https://maryiletey.com/images/icon.png">
+  <meta property="og:url" content="https://maryiletey.com">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Mary Letey">
+  <meta name="twitter:description" content="Applied Mathematics PhD student at Harvard. Deep learning theory.">
+  <meta name="twitter:image" content="https://maryiletey.com/images/icon.png">
+
+  <title>Mary Letey</title>
+  <meta name="author" content="Mary Letey" />
+  <meta name="description" content="Applied Math PhD student at Harvard" />
+  <meta name="color-scheme" content="dark light">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Jura:wght@400;600;700&family=Outfit:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <script>
+    (function () {
+      const savedTheme = localStorage.getItem("theme");
+      if (savedTheme === "light" || savedTheme === "dark") {
+        document.documentElement.dataset.theme = savedTheme;
+      } else if (window.matchMedia && window.matchMedia("(prefers-color-scheme: light)").matches) {
+        document.documentElement.dataset.theme = "light";
+      }
+    })();
+  </script>
+
+  <style>
+  :root{
+    --bg:#ffffff;
+    --bg-glow-1: rgba(110, 115, 210, 0.10);
+    --bg-glow-2: rgba(178, 151, 255, 0.08);
+    --fg:#121333;
+    --muted:#555675;
+    --border:#E4E4EB;
+    --soft:#F2F4FA;
+    --link:#6166DC;
+    --link-hover:#14142E;
+    --radius: 16px;
+    --hoverbg:#F2F4FA;
+    --icon-accent:#6F73D2;
+    --icon-accent-hover:#3E4299;
+    --paper-title:#54568F;
+    --paper-title-hover:#14142E;
+    --button-bg: rgba(97, 102, 220, 0.08);
+    --button-border: rgba(97, 102, 220, 0.18);
+    --button-shadow: 0 12px 30px rgba(30, 32, 78, 0.08);
+  }
+
+  html[data-theme="dark"]{
+    --bg:#121019;
+    --bg-glow-1: rgba(139, 120, 211, 0.16);
+    --bg-glow-2: rgba(91, 74, 129, 0.18);
+    --fg:#E8E1D7;
+    --muted:#A99FB0;
+    --border:#2C2636;
+    --soft:#1B1723;
+    --link:#B7A1FF;
+    --link-hover:#EFE9FF;
+    --hoverbg:rgba(183, 161, 255, 0.10);
+    --icon-accent:#B7A1FF;
+    --icon-accent-hover:#EFE9FF;
+    --paper-title:#C6B7FF;
+    --paper-title-hover:#F4EEFF;
+    --button-bg: rgba(183, 161, 255, 0.08);
+    --button-border: rgba(183, 161, 255, 0.20);
+    --button-shadow: 0 16px 42px rgba(0, 0, 0, 0.22);
+  }
+
+  html{ scroll-behavior:smooth; }
+
+  body{
+    margin:0;
+    background:
+      radial-gradient(circle at 12% 0%, var(--bg-glow-1), transparent 30rem),
+      radial-gradient(circle at 88% 10%, var(--bg-glow-2), transparent 32rem),
+      var(--bg);
+    color:var(--fg);
+    font-family: "Outfit", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    font-size: clamp(16px, 0.6vw + 14px, 18px);
+    line-height: 1.72;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    letter-spacing: -0.01em;
+    transition: background-color 180ms ease, color 180ms ease;
+  }
+
+  p{ margin: 0 0 12px; }
+
+  a{
+    color:var(--link);
+    text-decoration:none;
+    border-radius: 6px;
+    padding: 0 2px;
+    transition: color 160ms ease, background-color 160ms ease, border-color 160ms ease;
+  }
+
+  a:hover{
+    color:var(--link-hover);
+    background: var(--hoverbg);
+    text-decoration:none;
+  }
+
+  main{
+    max-width: 860px;
+    margin: 0 auto;
+    padding: clamp(32px, 5vw, 56px) 20px 72px;
+  }
+
+  header{
+    display:flex;
+    align-items:flex-start;
+    justify-content:space-between;
+    gap:16px;
+    flex-wrap:wrap;
+    margin-bottom: 18px;
+  }
+
+  .name-line{
+    font-family: "Jura", sans-serif;
+    margin: 0;
+    font-size: clamp(24px, 1.4vw + 18px, 30px);
+    letter-spacing: 0.02em;
+  }
+
+  .name-line b{ font-weight: 600; }
+
+  .header-links{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    flex-wrap:wrap;
+  }
+
+  .icons{
+    list-style:none;
+    padding:0;
+    margin:0;
+    display:flex;
+    gap:6px;
+    flex-wrap:wrap;
+  }
+
+  .icons a{
+    font-family: "Jura", sans-serif;
+    font-weight: 500;
+    padding: 6px;
+    background: none;
+  }
+
+  .icons a .linkicon{
+    width: 18px;
+    height: 18px;
+    fill: currentColor;
+    opacity: 0.9;
+    flex: 0 0 auto;
+  }
+
+  .icons a:hover{
+    color: var(--icon-accent-hover);
+    background: none;
+    text-decoration: none;
+  }
+
+  .theme-toggle{
+    display:inline-flex;
+    align-items:center;
+    gap:7px;
+    border:1px solid var(--button-border);
+    background:var(--button-bg);
+    color:var(--muted);
+    border-radius:999px;
+    padding:5px 10px;
+    font-family:"Jura", sans-serif;
+    font-size:12px;
+    font-weight:600;
+    letter-spacing:0.04em;
+    cursor:pointer;
+    box-shadow:var(--button-shadow);
+    transition: color 160ms ease, background-color 160ms ease, border-color 160ms ease, transform 160ms ease;
+  }
+
+  .theme-toggle:hover{
+    color:var(--link-hover);
+    border-color:var(--link);
+    transform:translateY(-1px);
+  }
+
+  .theme-toggle:focus-visible{
+    outline:2px solid var(--link);
+    outline-offset:3px;
+  }
+
+  .theme-toggle-icon{
+    font-size:13px;
+    line-height:1;
+  }
+
+  .intro{
+    display:flex;
+    gap:22px;
+    align-items:flex-start;
+    margin-top: 22px;
+    flex-direction: row-reverse;
+  }
+
+  .intro p{
+    font-size: 0.90em;
+    line-height: 1.5;
+  }
+
+  .avatar{
+    width: 140px;
+    height: 140px;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    background: transparent;
+    object-fit: cover;
+    flex: 0 0 auto;
+    box-shadow: var(--button-shadow);
+  }
+
+  .section{
+    margin-top: 26px;
+  }
+
+  .section h4{
+    font-family: "Jura", sans-serif;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    color: var(--link);
+    margin: 30px 0 12px;
+  }
+
+  .paper{
+    padding: 12px 0;
+    margin: 0;
+    border-top: 1px solid var(--border);
+    background: transparent;
+    border-radius: 0;
+  }
+
+  .paper:first-of-type{
+    border-top: none;
+  }
+
+  .conf-tag{
+    display:block;
+    font-size: 12px;
+    color: var(--muted);
+    margin-bottom: 6px;
+  }
+
+  .paper-title{
+    color: var(--paper-title);
+    font-weight: 600;
+    display: block;
+    margin: 2px 0 6px;
+    word-break: break-word;
+  }
+
+  .paper-title:hover{
+    color: var(--paper-title-hover);
+    text-decoration: underline;
+    background: none;
+  }
+
+  .paper-meta{
+    color: var(--muted);
+    font-size: 14px;
+  }
+
+  .small{
+    color: var(--muted);
+    font-size: 13px;
+  }
+
+  .divider{
+    height:1px;
+    background:var(--border);
+    margin: 28px 0;
+  }
+
+  .friends-section{
+    margin-top: 34px;
+  }
+
+  .friends-note{
+    color: var(--muted);
+    font-size: 14px;
+    margin: 0 0 10px;
+  }
+
+  .misc-links{
+    display:flex;
+    flex-wrap:wrap;
+    gap: 8px 14px;
+    margin: 0 0 18px;
+  }
+
+  .misc-link{
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+    color: var(--link);
+    padding:0;
+    border-radius:0;
+    background:none;
+    white-space:nowrap;
+  }
+
+  .misc-link:hover{
+    color: var(--link-hover);
+    background:none;
+    text-decoration:none;
+  }
+
+  .misc-icon{
+    font-size: 0.95em;
+    line-height:1;
+    opacity:0.9;
+    display:inline-block;
+    transform: translateY(-0.02em);
+  }
+
+  .friend-list{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 14px;
+    align-items: center;
+    line-height: 1.7;
+  }
+
+  .friend-link{
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--link);
+    padding: 0;
+    border-radius: 0;
+    background: none;
+    white-space: nowrap;
+  }
+
+  .friend-link:hover{
+    color: var(--link-hover);
+    background: none;
+    text-decoration: none;
+  }
+
+  .friend-icon{
+    font-size: 0.95em;
+    line-height: 1;
+    opacity: 0.85;
+    display: inline-block;
+    transform: translateY(-0.02em);
+  }
+
+  @media (max-width: 700px){
+    header{
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+
+    .intro{
+      display: grid;
+      grid-template-columns: 1fr max-content;
+      grid-template-rows: auto auto;
+      column-gap: 14px;
+      row-gap: 10px;
+      align-items: start;
+      margin-top: 12px;
+      flex-direction: initial;
+    }
+
+    .intro .avatar{
+      grid-column: 2;
+      grid-row: 1;
+      width: 110px;
+      height: 110px;
+      justify-self: end;
+    }
+
+    .intro > div{
+      grid-column: 1;
+      grid-row: 1;
+      min-width: 0;
+    }
+
+    .friend-list{
+      gap: 7px 12px;
+    }
+  }
+
+  @media (max-width: 420px){
+    main{
+      padding: 30px 14px 56px;
+    }
+
+    .icons{
+      gap: 8px;
+    }
+
+    .intro{
+      grid-template-columns: 1fr max-content;
+    }
+
+    .intro .avatar{
+      width: 96px;
+      height: 96px;
+    }
+
+    .theme-toggle{
+      padding: 5px 9px;
+    }
+  }
+  </style>
+</head>
+
+<body>
+  <main>
+    <header>
+      <div>
+        <p class="name-line">
+          <a href="/"><b>Mary Letey</b></a>
+        </p>
+      </div>
+
+      <div class="header-links">
+        <ul class="icons" aria-label="Links">
+          <li>
+            <a href="mailto:maryletey@fas.harvard.edu" title="Email">
+              <svg class="linkicon" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M4 4h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2zm0 2v.01L12 13 20 6.01V6H4zm0 12h16V8.24l-7.4 6.17a1 1 0 0 1-1.2 0L4 8.24V18z"/>
+              </svg>
+            </a>
+          </li>
+          <li>
+            <a href="cv.pdf" title="CV">
+              <svg class="linkicon" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                <path d="M14 2v6h6"/>
+                <path d="M8 13h8M8 17h8" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/>
+              </svg>
+            </a>
+          </li>
+          <li>
+            <a href="https://scholar.google.ca/citations?hl=en&user=h3poqqgAAAAJ&view_op=list_works&sortby=pubdate" target="_blank" rel="noreferrer" title="Google Scholar">
+              <svg class="linkicon" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M12 3 1 9l11 6 9-4.91V17h2V9z" />
+                <path d="M5 11.5V16c0 1.66 3.13 3 7 3s7-1.34 7-3v-4.5l-7 3.82z" />
+              </svg>
+            </a>
+          </li>
+          <li>
+            <a href="https://twitter.com/maryiletey" target="_blank" rel="noreferrer" title="X / Twitter">
+              <svg class="linkicon" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M13.3 10.9 19.6 3h-1.5l-5.5 6.9L8.2 3H3l6.6 9.6L3 21h1.5l5.8-7.3L15.3 21H20zM6.1 4.3h1.6l9.2 14.4h-1.6z" />
+              </svg>
+            </a>
+          </li>
+        </ul>
+
+        <button class="theme-toggle" type="button" aria-label="Toggle light and dark theme" aria-pressed="true">
+          <span class="theme-toggle-icon" aria-hidden="true">◐</span>
+          <span class="theme-toggle-text">dark</span>
+        </button>
+      </div>
+    </header>
+
+    <div class="intro">
+      <img class="avatar" src="images/me.jpg" alt="Mary Letey"
+      onerror="this.onerror=null;this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'280\' height=\'280\' viewBox=\'0 0 280 280\'><circle cx=\'140\' cy=\'140\' r=\'140\' fill=\'%232c2636\'/><text x=\'50%\' y=\'54%\' dominant-baseline=\'middle\' text-anchor=\'middle\' font-family=\'Arial, Helvetica, sans-serif\' font-size=\'96\' fill=\'%23e8e1d7\'>ML</text></svg>'" />
+
+      <div>
+        <p>
+          Hello there! I'm Mary, and I am a PhD student in Applied Mathematics at Harvard advised by Professor Cengiz Pehlevan.
+          I am fortunate to be supported by the Kempner Fellowship.
+        </p>
+        <p>
+          My main interest is in deep learning theory, and I'm currently working on in-context learning.
+        </p>
+      </div>
+    </div>
+
+    <div class="section" id="pubs">
+      <h4>Publications + Preprints</h4>
+
+      <div class="paper">
+        <span class="conf-tag">ICLR 2026</span>
+        <a class="paper-title" href="https://arxiv.org/abs/2509.26551" target="_blank" rel="noreferrer">
+          Pretrain-Test Task Alignment Governs Generalization in In-Context Learning
+        </a>
+        <div class="paper-meta"><strong>Mary Letey</strong>, Jacob Zavatone-Veth, Yue M. Lu, Cengiz Pehlevan</div>
+      </div>
+
+      <div class="paper">
+        <span class="conf-tag">ICLR 2026</span>
+        <a class="paper-title" href="https://arxiv.org/abs/2510.01098" target="_blank" rel="noreferrer">
+          Theory of Scaling Laws for In-Context Regression: Depth, Width, Context and Time
+        </a>
+        <div class="paper-meta">Blake Bordelon, <strong>Mary Letey</strong>, Cengiz Pehlevan</div>
+      </div>
+
+      <div class="paper">
+        <span class="conf-tag">Proceedings of the National Academy of Sciences, 2025</span>
+        <a class="paper-title" href="https://www.pnas.org/doi/abs/10.1073/pnas.2502599122" target="_blank" rel="noreferrer">
+          Asymptotic theory of in-context learning by linear attention
+        </a>
+        <div class="paper-meta">Yue M. Lu, <strong>Mary Letey</strong>, Jacob Zavatone-Veth, Anindita Maiti, Cengiz Pehlevan</div>
+      </div>
+
+      <div class="paper">
+        <span class="conf-tag">Physics Review D, 2024</span>
+        <a class="paper-title" href="https://journals.aps.org/prd/abstract/10.1103/PhysRevD.109.123502" target="_blank" rel="noreferrer">
+          Quantum initial conditions for curved inflating universes
+        </a>
+        <div class="paper-meta"><strong>Mary Letey*</strong>, Zakhar Shumaylov*, Fruzsina Agocs, Will Handley, Michael Hobson, Anthony Lasenby</div>
+      </div>
+
+      <div class="paper">
+        <span class="conf-tag">Master's Thesis, 2023</span>
+        <a class="paper-title" href="papers/essay.pdf" target="_blank">
+          Discrete Symmetry in Lorentzian Spaces
+        </a>
+        <div class="paper-meta"><strong>Mary Letey</strong>, Latham Boyle</div>
+      </div>
+    </div>
+
+    <div class="section friends-section" id="friends">
+      <h4>misc</h4>
+      <div class="misc-links" aria-label="Miscellaneous links">
+        <a class="misc-link" href="photos.html"><span class="misc-icon" aria-hidden="true">📷</span><span>some photos</span></a>
+      </div>
+      <p class="friends-note">some friends</p>
+
+      <div class="friend-list" aria-label="Friends and collaborators">
+        <a class="friend-link" href="https://aa-mill.github.io/" target="_blank" rel="noreferrer"><span class="friend-icon"></span><span>aaron</span></a>
+        <a class="friend-link" href="https://adamlee.me/" target="_blank" rel="noreferrer"><span class="friend-icon"></span><span>adam</span></a>
+        <a class="friend-link" href="https://aidandc.co/" target="_blank" rel="noreferrer"><span class="friend-icon"></span><span>aidan</span></a>
+        <a class="friend-link" href="https://alexandrumeterez.github.io/" target="_blank" rel="noreferrer"><span class="friend-icon"></span><span>alex</span></a>
+        <a class="friend-link" href="https://scholar.google.com/citations?user=lmCaJEsAAAAJ&hl=en" target="_blank" rel="noreferrer"><span class="friend-icon"></span><span>ali</span></a>
+        <a class="friend-link" href="https://andrewncheng.github.io/" target="_blank" rel="noreferrer"><span class="friend-icon"></span><span>andrew</span></a>
+        <a class="friend-link" href="https://batia.me/" target="_blank" rel="noreferrer"><span class="friend-icon"></span><span>batia</span></a>
+        <a class="friend-link" href="https://clarabing.github.io/" target="_blank" rel="noreferrer"><span class="friend-icon"></span><span>bingbin</span></a>
+        <a class="friend-link" href="https://scholar.google.com/citations?user=UGZ0jy4AAAAJ&hl=en" target="_blank" rel="noreferrer"><span class="friend-icon">☕</span><span>clarissa</span></a>
+        <a class="friend-link" href="https://scholar.google.com/citations?user=igG86KoAAAAJ&hl=en" target="_blank" rel="noreferrer"><span class="friend-icon"></span><span>gabriela</span></a>
+        <a class="friend-link" href="https://gavinmccracken.substack.com/" target="_blank" rel="noreferrer"><span class="friend-icon"></span><span>gavin</span></a>
+        <a class="friend-link" href="https://scholar.google.co.uk/citations?user=3L5EeD0AAAAJ&hl=en&authuser=4&oi=ao" target="_blank" rel="noreferrer"><span class="friend-icon">⛳</span><span>george</span></a>
+        <a class="friend-link" href="https://jzv.io/" target="_blank" rel="noreferrer"><span class="friend-icon"></span><span>jacob</span></a>
+        <a class="friend-link" href="https://www.linkedin.com/in/janice-jizhe-590a19250/" target="_blank" rel="noreferrer"><span class="friend-icon"></span><span>janice</span></a>
+        <a class="friend-link" href="https://jeffreymorais.netlify.app/" target="_blank" rel="noreferrer"><span class="friend-icon"></span><span>jeff</span></a>
+        <a class="friend-link" href="https://letey.de/" target="_blank" rel="noreferrer"><span class="friend-icon">✈️</span><span>john</span></a>
+        <a class="friend-link" href="https://www.linkedin.com/in/kat-slattery-67504b155/" target="_blank" rel="noreferrer"><span class="friend-icon"></span><span>kat</span></a>
+        <a class="friend-link" href="https://nathaeldacosta.onepage.me/" target="_blank" rel="noreferrer"><span class="friend-icon"></span><span>nat</span></a>
+        <a class="friend-link" href="https://www.reflex-aaah.co.uk/" target="_blank" rel="noreferrer"><span class="friend-icon"></span><span>natasha</span></a>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    (function () {
+      const root = document.documentElement;
+      const button = document.querySelector(".theme-toggle");
+      const label = document.querySelector(".theme-toggle-text");
+      const icon = document.querySelector(".theme-toggle-icon");
+
+      function setTheme(theme) {
+        root.dataset.theme = theme;
+        localStorage.setItem("theme", theme);
+        const dark = theme === "dark";
+        button.setAttribute("aria-pressed", String(dark));
+        label.textContent = dark ? "dark" : "light";
+        icon.textContent = dark ? "◐" : "○";
+      }
+
+      setTheme(root.dataset.theme || "dark");
+
+      button.addEventListener("click", function () {
+        setTheme(root.dataset.theme === "dark" ? "light" : "dark");
+      });
+    })();
+  </script>
+</body>
+</html>
